@@ -44,3 +44,16 @@ CREATE TABLE sales (
   FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE SET NULL,
   FOREIGN KEY (sold_by) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
+-- Insert a default admin user (Username: admin, Password: password123)
+-- Note: The password string below is a pre-hashed version of 'password123' using PHP's password_hash()
+INSERT INTO users (username, full_name, password, created_at) 
+VALUES ('admin', 'System Administrator', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NOW());
+
+-- Insert a sample product
+INSERT INTO products (name, price, stock_quantity, created_at) 
+VALUES ('Wireless Mouse', 450.00, 25, NOW());
+
+-- Insert a sample customer
+INSERT INTO customers (full_name, email, phone, created_at) 
+VALUES ('Juan Dela Cruz', 'juan@example.com', '09123456789', NOW());
