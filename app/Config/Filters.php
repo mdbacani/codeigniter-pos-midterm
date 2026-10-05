@@ -6,6 +6,17 @@ use CodeIgniter\Filters\FilterInterface;
 
 class AuthFilter implements FilterInterfaceHere is a comprehensive guide to implementing **Authentication**, **Controller Filters**, **Form Validation**, and the **Sales Workflow with Stock Validation** for your CodeIgniter Point-of-Sale project.
 
+public $filters = [
+    'auth' => [
+        'before' => [
+            'products', 'products/*',
+            'customers', 'customers/*',
+            'users', 'users/*',
+            'sales', 'sales/*'
+        ]
+    ]
+];
+    
 ---
 
 ### 1. Authentication & Controller Filters
