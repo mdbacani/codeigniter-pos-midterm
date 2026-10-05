@@ -33,3 +33,14 @@ public function store() {
 
     // Save data to database...
 }
+
+$routes->get('login', 'Auth::login');
+$routes->post('login/auth', 'Auth::authenticate');
+$routes->get('logout', 'Auth::logout');
+
+// Protected Management Routes (Applies the auth filter to everything inside)
+$routes->group('', ['filter' => 'auth'], function($routes) {
+    $routes->get('products', 'Products::index');
+    $routes->get('customers', 'Customers::index');
+    $routes->get('users', 'Users::index');
+    $routes->get('sales/create', 'Sales::create');
